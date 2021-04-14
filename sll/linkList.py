@@ -25,7 +25,6 @@ class LinkedList:
 
   def prepend(self, data):
     new_node = Node(data)
-
     new_node.next = self.head
     self.head = new_node
   
@@ -34,13 +33,10 @@ class LinkedList:
       print("Previous node does not exist.")
       return
     new_node = Node(data)
-
     new_node.next = prev_node.next
     prev_node.next = new_node
 
-
   def delete_node(self, key):
-
      cur_node = self.head
 
      if cur_node and cur_node.data == key:
@@ -225,4 +221,5 @@ class LinkedList:
        self.head = p.next 
        p.next = None
 
-
+  def move_tail_to_head(self):
+      self.rotate(self.len_iterative() - 1)
