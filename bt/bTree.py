@@ -1,3 +1,5 @@
+from queue import *
+
 class Node(object):
     def __init__(self, value):
         self.value = value
@@ -16,6 +18,8 @@ class BinaryTree(object):
             return self.inorder_print(self.root, "")
         elif traversal_type == "postorder":
             return self.postorder_print(self.root, "")
+        elif traversal_type == "levelorder":
+            return self.levelorder_print(self.root)
 
         else:
             print("Traversal type " + str(traversal_type) + " is not supported.")
@@ -45,3 +49,21 @@ class BinaryTree(object):
             traversal += (str(start.value) + "-")
         return traversal
 
+    def levelorder_print(self, start):
+        if start is None:
+            return
+
+        queue = Queue()
+        queue.enqueue(start)
+
+        traversal = ""
+        while len(queue) > 0:
+            traversal += str(queue.peek()) + "-"
+            node = queue.dequeue()
+
+            if node.left:
+                queue.enqueue(node.left)
+            if node.right:
+                queue.enqueue(node.right)
+
+        return traversal
