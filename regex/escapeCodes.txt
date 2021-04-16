@@ -1,0 +1,16 @@
+d : Matches digit
+
+D : Matches non-digit
+
+s : Matches whitespace
+
+S : Matches non-whitespace
+
+w : Matches alphanumeric
+
+W : Matches non-alphanumeric
+
+
+* : 0 or more occurances
++ : 1 or more occurances
+? : 0 or 1 occurance
