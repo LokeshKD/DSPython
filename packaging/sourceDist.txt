@@ -1,0 +1,87 @@
+Distutils supports building multiple types of release packages. 
+At a minimum, you should build a “source distribution” that contains 
+your source code, your Distutils setup script, your “read me” file, and 
+whatever additional files you want to include. To build a source distribution, 
+pass the sdist command to your Distutils setup script.
+
+
+c:\Users\pilgrim\chardet> c:\python31\python.exe setup.py sdist
+running sdist
+running check
+reading manifest template 'MANIFEST.in'
+writing manifest file 'MANIFEST'
+creating chardet-1.0.2
+creating chardet-1.0.2\chardet
+creating chardet-1.0.2\docs
+creating chardet-1.0.2\docs\images
+copying files to chardet-1.0.2...
+copying COPYING -> chardet-1.0.2
+copying README.txt -> chardet-1.0.2
+copying setup.py -> chardet-1.0.2
+copying chardet\__init__.py -> chardet-1.0.2\chardet
+copying chardet\big5freq.py -> chardet-1.0.2\chardet
+...
+copying chardet\universaldetector.py -> chardet-1.0.2\chardet
+copying chardet\utf8prober.py -> chardet-1.0.2\chardet
+copying docs\faq.html -> chardet-1.0.2\docs
+copying docs\history.html -> chardet-1.0.2\docs
+copying docs\how-it-works.html -> chardet-1.0.2\docs
+copying docs\index.html -> chardet-1.0.2\docs
+copying docs\license.html -> chardet-1.0.2\docs
+copying docs\supported-encodings.html -> chardet-1.0.2\docs
+copying docs\usage.html -> chardet-1.0.2\docs
+copying docs\images\caution.png -> chardet-1.0.2\docs\images
+copying docs\images\important.png -> chardet-1.0.2\docs\images
+copying docs\images\note.png -> chardet-1.0.2\docs\images
+copying docs\images\permalink.gif -> chardet-1.0.2\docs\images
+copying docs\images\tip.png -> chardet-1.0.2\docs\images
+copying docs\images\warning.png -> chardet-1.0.2\docs\images
+creating dist
+creating 'dist\chardet-1.0.2.zip' and adding 'chardet-1.0.2' to it
+adding 'chardet-1.0.2\COPYING'
+adding 'chardet-1.0.2\PKG-INFO'
+adding 'chardet-1.0.2\README.txt'
+adding 'chardet-1.0.2\setup.py'
+adding 'chardet-1.0.2\chardet\big5freq.py'
+adding 'chardet-1.0.2\chardet\big5prober.py'
+...
+adding 'chardet-1.0.2\chardet\universaldetector.py'
+adding 'chardet-1.0.2\chardet\utf8prober.py'
+adding 'chardet-1.0.2\chardet\__init__.py'
+adding 'chardet-1.0.2\docs\faq.html'
+adding 'chardet-1.0.2\docs\history.html'
+adding 'chardet-1.0.2\docs\how-it-works.html'
+adding 'chardet-1.0.2\docs\index.html'
+adding 'chardet-1.0.2\docs\license.html'
+adding 'chardet-1.0.2\docs\supported-encodings.html'
+adding 'chardet-1.0.2\docs\usage.html'
+adding 'chardet-1.0.2\docs\images\caution.png'
+adding 'chardet-1.0.2\docs\images\important.png'
+adding 'chardet-1.0.2\docs\images\note.png'
+adding 'chardet-1.0.2\docs\images\permalink.gif'
+adding 'chardet-1.0.2\docs\images\tip.png'
+adding 'chardet-1.0.2\docs\images\warning.png'
+removing 'chardet-1.0.2' (and everything under it)
+
+
+everal things to note here:
+
+Distutils noticed the manifest file (MANIFEST.in).
+Distutils successfully parsed the manifest file and added the additional files 
+we wanted — COPYING.txt and the HTML and image files in the docs/ directory.
+If you look in your project directory, you’ll see that Distutils created a dist/ directory.
+Within the dist/ directory the .zip file that you can distribute.
+
+c:\Users\pilgrim\chardet> dir dist
+ Volume in drive C has no label.
+ Volume Serial Number is DED5-B4F8
+
+ Directory of c:\Users\pilgrim\chardet\dist
+
+07/30/2009  06:29 PM    <DIR>          .
+07/30/2009  06:29 PM    <DIR>          ..
+07/30/2009  06:29 PM           206,440 chardet-1.0.2.zip
+               1 File(s)        206,440 bytes
+               2 Dir(s)  61,424,635,904 bytes free
+
+

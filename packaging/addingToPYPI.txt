@@ -1,0 +1,58 @@
+
+Adding Your Software to The Python Package Index
+Uploading software to the Python Package Index is a three step process.
+
+Register yourself
+Register your software
+Upload the packages you created with setup.py sdist and setup.py bdist_*
+To register yourself, go to the PyPI user registration page. Enter your desired username and password, provide a valid email address, and click the Register button. (If you have a pgp or gpg key, you can also provide that. If you don’t have one or don’t know what that means, don’t worry about it.) Check your email; within a few minutes, you should receive a message from PyPI with a validation link. Click the link to complete the registration process.
+
+Now you need to register your software with PyPI and upload it. You can do this all in one step.
+
+c:\Users\pilgrim\chardet> c:\python31\python.exe setup.py register sdist bdist_wininst upload  ①
+running register
+We need to know who you are, so please choose either:
+ 1. use your existing login,
+ 2. register as a new user,
+ 3. have the server generate a new password for you (and email it to you), or
+ 4. quit
+Your selection [default 1]:  1                                                                 ②
+Username: MarkPilgrim                                                                          ③
+Password:
+Registering chardet to http://pypi.python.org/pypi                                             ④
+Server response (200): OK
+running sdist                                                                                  ⑤
+... output trimmed for brevity ...
+running bdist_wininst                                                                          ⑥
+... output trimmed for brevity ...
+running upload                                                                                 ⑦
+Submitting dist\chardet-1.0.2.zip to http://pypi.python.org/pypi
+Server response (200): OK
+Submitting dist\chardet-1.0.2.win32.exe to http://pypi.python.org/pypi
+Server response (200): OK
+I can store your PyPI login so future submissions will be faster.
+(the login will be stored in c:\home\.pypirc)
+Save your login (y/N)?n           
+
+① When you release your project for the first time, Distutils will add your software to the Python Package Index and give it its own URL. Every time after that, it will simply update the project metadata with any changes you may have made in your setup.py parameters. Next, it builds a source distribution (sdist) and a Windows installer (bdist_wininst), then uploads them to PyPI (upload).
+
+② Type 1 or just press ENTER to select “use your existing login.”
+
+③ Enter the username and password you selected on the the PyPI user registration page. Distuils will not echo your password; it will not even echo asterisks in place of characters. Just type your password and press ENTER.
+
+④ Distutils registers your package with the Python Package Index…
+
+⑤ …builds your source distribution…
+
+⑥ …builds your Windows installer…
+
+⑦ …and uploads them both to the Python Package Index.
+
+⑧ If you want to automate the process of releasing new versions, you need to save your PyPI credentials in a local file. This is completely insecure and completely optional.
+
+Congratulations, you now have your own page on the Python Package Index! The address is http://pypi.python.org/pypi/NAME, where NAME is the string you passed in the name parameter in your setup.py file.
+
+If you want to release a new version, just update your setup.py with the new version number, then run the same upload command again:
+c:\Users\pilgrim\chardet> c:\python31\python.exe setup.py register sdist bdist_wininst upload
+
+

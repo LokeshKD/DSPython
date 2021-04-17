@@ -1,0 +1,46 @@
+
+chardet/
+|
++--COPYING.txt
+|
++--setup.py
+|
++--README.txt
+|
++--docs/
+|  |
+|  +--index.html
+|  |
+|  +--usage.html
+|  |
+|  +--images/ ...
+|
++--chardet/
+   |
+   +--__init__.py
+   |
+   +--big5freq.py
+   |
+   +--...
+
+
+① Make a root directory to hold everything. Give it the same name as your Python module.
+
+② To accomodate Windows users, your “read me” file should include a .txt extension, and it should use Windows-style carriage returns. 
+Just because you use a fancy text editor that runs from the command line and includes its own macro language, that doesn’t mean you 
+need to make life difficult for your users. (Your users use Notepad. Sad but true.) 
+Even if you’re on Linux or Mac OS X, your fancy text editor undoubtedly has an option to save files with Windows-style carriage returns.
+
+③ Your Distutils setup script should be named setup.py unless you have a good reason not to. You do not have a good reason not to.
+
+④ If your Python software is a single .py file, you should put it in the root directory along with your “read me” file and your setup script. 
+But httplib2 is not a single .py file; it’s a multi-file module. But that’s OK! Just put the httplib2 directory in the root directory, so you 
+have an __init__.py file within an httplib2/ directory within the httplib2/ root directory. That’s not a problem; in fact, it will simplify 
+your packaging process.
+
+The chardet directory looks slightly different. Like httplib2, it’s a multi-file module, so there’s a chardet/ directory within the 
+chardet/ root directory. In addition to the README.txt file, chardet has HTML-formatted documentation in the docs/ directory. The docs/
+directory contains several .html and .css files and an images/ subdirectory, which contains several .png and .gif files. (This will be 
+important later.) Also, in keeping with the convention for (L)GPL-licensed software, it has a separate file called COPYING.txt which 
+contains the complete text of the LGPL.
+

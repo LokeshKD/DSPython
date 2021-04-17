@@ -1,0 +1,23 @@
+By default, Distutils will include the following files in your release package:
+
+README.txt
+setup.py
+The .py files needed by the multi-file modules listed in the packages parameter
+The individual .py files listed in the py_modules parameter
+That will cover all the files in the httplib2 project. But for the chardet project, we also want to include the COPYING.txt license file and the entire docs/ directory that contains images and HTML files. To tell Distutils to include these additional files and directories when it builds the chardet release package, you need a manifest file.
+
+A manifest file is a text file called MANIFEST.in. Place it in the project’s root directory, next to README.txt and setup.py. Manifest files are not Python scripts; they are text files that contain a series of “commands” in a Distutils-defined format. Manifest commands allow you to include or exclude specific files and directories.
+
+This is the entire manifest file for the chardet project:
+
+include COPYING.txt                                ①
+recursive-include docs *.html *.css *.png *.gif    ②
+
+① The first line is self-explanatory: include the COPYING.txt file from the project’s root directory.
+
+② The second line is a bit more complicated. The recursive-include command takes a directory name and one or more filenames. The filenames aren’t limited to specific files; they can include wildcards. This line means “See that docs/ directory in the project’s root directory? Look in there (recursively) for .html, .css, .png, and .gif files. I want all of them in my release package.”
+
+All manifest commands preserve the directory structure that you set up in your project directory. That recursive-include command is not going to put a bunch of .html and .png files in the root directory of the release package. It’s going to maintain the existing docs/ directory structure, but only include those files inside that directory that match the given wildcards. (I didn’t mention it earlier, but the chardet documentation is actually written in XML and converted to HTML by a separate script. I don’t want to include the XML files in the release package, just the HTML and the images.)
+
+To reiterate: you only need to create a manifest file if you want to include files that Distutils doesn’t include by default. If you do need a manifest file, it should only include the files and directories that Distutils wouldn’t otherwise find on its own.
+
