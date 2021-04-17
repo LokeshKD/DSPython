@@ -1,0 +1,20 @@
+usage: python -m unittest [-h] [-v] [-q] [--locals] [-f] [-c] [-b]
+                           [tests [tests ...]]
+
+positional arguments:
+  tests           a list of any number of test modules, classes and test
+                  methods.
+
+optional arguments:
+  -h, --help      show this help message and exit
+  -v, --verbose   Verbose output
+  -q, --quiet     Quiet output
+  --locals        Show local variables in tracebacks
+  -f, --failfast  Stop on first fail or error
+  -c, --catch     Catch ctrl-C and display results so far
+  -b, --buffer    Buffer stdout and stderr during tests
+
+Examples:
+  python -m unittest test_module               - run tests from test_module
+  python -m unittest module.TestClass          - run tests from module.TestClass
+  python -m unittest module.Class.test_method  - run specified test method
